@@ -1,0 +1,62 @@
+<mat-sidenav-container class="example-container">
+  <mat-sidenav class ="example-sidenav" mode="over" [fixedInViewport]="true" opened mode="side">
+      <mat-accordion>
+          <a mat-button style="text-align: center">
+              <mat-icon [routerLink]="['/home']">
+              <button mat-icon-button color="accent" aria-label="Home button">
+                <mat-icon>home</mat-icon>
+              </button>
+              </mat-icon>
+          </a>
+          <mat-expansion-panel >
+              <mat-expansion-panel-header class = "example-panel">
+                  <mat-panel-title>
+                      Proizvodi
+                  </mat-panel-title>
+              </mat-expansion-panel-header>
+              <mat-nav-list>
+                  <a mat-button [routerLink]="['/cvetni-aranzman']">Cvetni aranžman</a>
+              </mat-nav-list>
+              <mat-nav-list>
+                  <a mat-button [routerLink]="['/dodatak']">Dodatak</a>
+              </mat-nav-list>
+              <mat-nav-list>
+                  <a mat-button [routerLink]="['/cvet']">Cvet</a>
+              </mat-nav-list>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel>
+            <mat-expansion-panel-header class = "example-panel">
+                <mat-panel-title>
+                    Registracija
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-nav-list>
+                <a [routerLink]="['/login']" mat-button>Login</a>
+            </mat-nav-list>
+            <mat-nav-list>
+                <a [routerLink]="['/sing-up']" mat-button>Sing Up</a>
+            </mat-nav-list>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class = "example-panel">
+              <mat-panel-title>
+                  Informacije
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+              <a [routerLink]="['/home']" mat-button>Početna</a>
+          </mat-nav-list>
+          <mat-nav-list>
+            <a [routerLink]="['/info']" mat-button>O nama</a>
+        </mat-nav-list>
+          <mat-nav-list>
+              <a [routerLink]="['/kontakt']" mat-button>Kontakt</a>
+          </mat-nav-list>
+      </mat-expansion-panel>
+
+      </mat-accordion>
+  </mat-sidenav>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
