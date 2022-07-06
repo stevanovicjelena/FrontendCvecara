@@ -1,5 +1,5 @@
 export class VrstaCveta{
-  idVrsteCveta !: number;
-  nazivVrste !: string;
-  opisVrste !: string;
+  vrstaCvetaID : number;
+  nazivVrste : string;
+  opisVrste : string;
 }

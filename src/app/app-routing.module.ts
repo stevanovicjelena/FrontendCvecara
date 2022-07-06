@@ -1,3 +1,5 @@
+import { KorisnikComponent } from './components/korisnik/korisnik.component';
+import { KorpaComponent } from './components/korpa/korpa.component';
 import { DodatakComponent } from './components/dodatak/dodatak.component';
 import { HomeComponent } from './components/core/home/home.component';
 import { KontaktComponent } from './components/core/kontakt/kontakt.component';
@@ -9,17 +11,21 @@ import { CvetniAranzmanComponent } from './components/cvetni-aranzman/cvetni-ara
 import { CvetComponent } from './components/cvet/cvet.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+
 
 const routes: Routes = [
-  {path : 'cvet', component : CvetComponent},
-  {path: 'cvetni-aranzman', component: CvetniAranzmanComponent},
+  {path : 'cvet', component : CvetComponent, canActivate:[AuthGuard]},
+  {path: 'cvetni-aranzman', component: CvetniAranzmanComponent,canActivate: [AuthGuard]},
   {path: 'dodatak', component: DodatakComponent},
   {path: 'login', component : LoginComponent},
-  {path: 'porudzbina', component: PorudzbinaComponent},
   {path: 'sing-up', component: SingUpComponent},
   {path: 'info', component: InfoComponent},
   {path: 'kontakt', component: KontaktComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'porudzbina', component : PorudzbinaComponent},
+  {path: 'korpa', component: KorpaComponent, canActivate:[AuthGuard]},
+  {path: 'korisnik', component: KorisnikComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

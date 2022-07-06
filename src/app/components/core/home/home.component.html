@@ -1,1 +1,26 @@
-<p>home works!</p>
+<div>
+<img src="/assets/img/logo1.png" class="img">
+<br>
+<div class="title-center">
+<h1 ><i>Dobrodošli u online cvećaru</i></h1>
+</div>
+    <div class="btn1">
+      <button mat-flat-button color="accent" *ngIf="!isUserAuthenticated()" routerLink="/login" >Login</button>
+    </div>
+  <br>
+    <div class="btn1">
+      <button mat-flat-button color="accent" *ngIf="!isUserAuthenticated()" routerLink="/sing-up">SingUp</button>
+    </div>
+
+  <br>
+  <div *ngIf="isUserAuthenticated()" class="btn1">
+    <button mat-flat-button color="accent" (click)="logOut()">Logout</button>
+  </div>
+<br>
+<br>
+<br><br><br><br><br><br>
+</div>
+
+
+
+

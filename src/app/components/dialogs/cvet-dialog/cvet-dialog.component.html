@@ -1,7 +1,7 @@
 <div class="container">
   <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje cveta</h3>
-  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija cveta: {{data.idCveta}}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje cveta: {{data.idCveta}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija cveta: {{data.cvetID}}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje cveta: {{data.cvetID}}</h3>
 
   <form class="mat-dialog-content"  #formControl="ngForm">
 
@@ -20,8 +20,8 @@
     <div class="form">
       <mat-form-field>
         <mat-select [(ngModel)]="data.vrstaCveta" placeholder="Vrsta cveta" name="vrstaCveta" [compareWith]="compareTo" [disabled]="flag == 3">
-          <mat-option *ngFor="let vrsta of vrste" [value]="vrsta">
-            {{ vrsta.nazivVrste }}
+          <mat-option *ngFor="let vrstaCveta of vrsteCvetova" [value]="vrstaCveta">
+            {{ vrstaCveta.nazivVrste }}
           </mat-option>
         </mat-select>
       </mat-form-field>

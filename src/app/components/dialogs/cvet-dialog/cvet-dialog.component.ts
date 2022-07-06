@@ -14,9 +14,9 @@ import { VrstaCvetaServiceService } from 'src/app/services/vrsta-cveta-service.s
 })
 export class CvetDialogComponent implements OnInit {
 
-  public flag !: number;
-  vrste !: VrstaCveta[];
-  vrstaSubscription !: Subscription;
+  public flag : number;
+  vrsteCvetova : VrstaCveta[];
+  vrstaSubscription : Subscription;
 
   constructor(public snackBar : MatSnackBar,
               public dialogRef : MatDialogRef<CvetDialogComponent>,
@@ -26,8 +26,8 @@ export class CvetDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.vrstaSubscription = this.vrstaCvetaService.getAllVrste()
-    .subscribe(vrste => {
-      this.vrste = vrste
+    .subscribe(vrsteCvetova => {
+      this.vrsteCvetova = vrsteCvetova
     }),
     (error: Error) => {
       console.log(error.name + ' ' + error.message);
@@ -43,8 +43,9 @@ export class CvetDialogComponent implements OnInit {
   }
 
   public add() : void{
+    this.data.vrstaCvetaID = this.data.vrstaCveta.vrstaCvetaID;
     this.cvetService.addCvet(this.data)
-    .subscribe(() => {this.snackBar.open('Uspesno dodat cvet: ' + this.data.bojaCveta, 'U redu', {
+    .subscribe(() => {this.snackBar.open('Uspesno dodat cvet: ' + this.data.vrstaCveta?.nazivVrste, 'U redu', {
       duration: 2500
       });
       }),
@@ -57,6 +58,7 @@ export class CvetDialogComponent implements OnInit {
   }
 
   public update() : void{
+    this.data.vrstaCvetaID = this.data.vrstaCveta.vrstaCvetaID;
     this.cvetService.updateCvet(this.data)
     .subscribe(() => {this.snackBar.open('Uspesno modifikovan cvet: ' + this.data.bojaCveta, ' U redu', {
       duration : 2500});
@@ -70,7 +72,8 @@ export class CvetDialogComponent implements OnInit {
   }
 
   public delete() : void{
-    this.cvetService.deleteCvet(this.data.idCveta)
+    this.data.vrstaCvetaID = this.data.vrstaCveta.vrstaCvetaID;
+    this.cvetService.deleteCvet(this.data.cvetID)
     .subscribe(() => {
       this.snackBar.open('Uspesno obrisan cvet:', 'U redu', {
       duration: 2500

@@ -1,4 +1,4 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container class="example-sidenav">
   <mat-sidenav class ="example-sidenav" mode="over" [fixedInViewport]="true" opened mode="side">
       <mat-accordion>
           <a mat-button style="text-align: center">
@@ -38,6 +38,31 @@
                 <a [routerLink]="['/sing-up']" mat-button>Sing Up</a>
             </mat-nav-list>
         </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class = "example-panel">
+              <mat-panel-title>
+                  Porudžbina
+              </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+              <a [routerLink]="['/korpa']" mat-button>Korpa</a>
+          </mat-nav-list>
+          <mat-nav-list>
+              <a [routerLink]="['/porudzbina']" mat-button>Porudžbina</a>
+          </mat-nav-list>
+      </mat-expansion-panel>
+
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class = "example-panel">
+            <mat-panel-title>
+                Korisnik
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list>
+            <a [routerLink]="['/korisnik']" mat-button>Korisnik</a>
+        </mat-nav-list>
+    </mat-expansion-panel>
 
         <mat-expansion-panel>
           <mat-expansion-panel-header class = "example-panel">

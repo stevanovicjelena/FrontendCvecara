@@ -17,7 +17,7 @@ export class CvetServiceService {
 
   }
 
-  public addCvet(cvet : Cvet) : Observable<any>{
+  public addCvet(cvet : Cvet) : Observable<any> {
 
     return this.httpClient.post(`${CVET_URL}`, cvet);
 

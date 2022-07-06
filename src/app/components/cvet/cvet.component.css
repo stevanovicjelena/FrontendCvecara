@@ -41,3 +41,6 @@
 .mat-row:active, .mat-row.example-selected-row {
   background: #eaeaea;
 }
+.img{
+  width: 5%;
+}

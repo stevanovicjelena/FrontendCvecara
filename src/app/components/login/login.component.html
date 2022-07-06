@@ -1,1 +1,25 @@
-<p>login works!</p>
+<mat-toolbar color="accent">
+  <span class="title-center">Login</span>
+</mat-toolbar>
+<p>
+  <mat-card  class="mat-card-container" >
+              <mat-card-content>
+                <form action="" #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                  <img src="/assets/img/logo1.png" class="mx-auto d-block img">
+                  <br/><br/>
+                  <h2>Unesite podatke</h2>
+                  <div *ngIf="invalidLogin" class="alert alert-danger"><h5 class="h5">Neispravno korisnicko ime ili lozinka.</h5></div>
+                  <mat-form-field appearance="fill">
+                    <mat-label for = "username">Korisničko ime</mat-label>
+                    <input matInput type="username"  name="username" [(ngModel)]="credentials.korisnickoIme"
+                    class="form-control" placeholder="User Name" required>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill">
+                    <mat-label for="password" class="sr-only">Lozinka</mat-label>
+                    <input matInput type="password"  name="password" [(ngModel)]="credentials.lozinka"
+                    class="form-control" placeholder="Password" required>
+                  </mat-form-field>
+                  <button mat-button mat-flat-button color="accent" type="submit" [disabled]="!loginForm.valid">Login</button>
+                </form>
+              </mat-card-content>
+</mat-card>

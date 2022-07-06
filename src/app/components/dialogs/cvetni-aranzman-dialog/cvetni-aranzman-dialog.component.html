@@ -1,7 +1,7 @@
 <div class="container">
   <h3 mat-dialog-title *ngIf="flag == 1">Dodavanje cvetnog aranzmana</h3>
   <h3 mat-dialog-title *ngIf="flag == 2">Modifikacija cvetnog aranzmana: {{data.nazivAranzmana}}</h3>
-  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje cvetnog aranzmana: {{data.nazivAranzmana}</h3>
+  <h3 mat-dialog-title *ngIf="flag == 3">Brisanje cvetnog aranzmana: {{data.nazivAranzmana}}</h3>
 
   <form class="mat-dialog-content"  #formControl="ngForm">
 
@@ -20,6 +20,22 @@
     <div class="form">
       <mat-form-field>
         <input matInput placeholder="Opis cvetnog aranzmana" [(ngModel)]="data.opisAranzmana" name="opisAranzmana" [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput placeholder="Kolicina na stanju" [(ngModel)]="data.kolicina" name="kolicina" [disabled]="flag == 3" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <mat-select [(ngModel)]="data.pakovanje" placeholder="Pakovanje" name="pakovanje" [compareWith]="compareTo" [disabled]="flag == 3">
+          <mat-option *ngFor="let pakovanje of pakovanja" [value]="pakovanje">
+            {{ pakovanje.nazivPakovanja }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 

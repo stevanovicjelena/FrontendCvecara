@@ -1,0 +1,18 @@
+.title-center {
+  margin-left: 400px;
+  color: #d81b60;
+  font-style: oblique;
+}
+
+.img{
+  display: block;
+  margin-left: auto;
+  margin-right: 325px;
+  margin-top: 20px;
+}
+.btn1{
+  margin-left: 500px;
+}
+.mat-flat-button{
+  width: 25%;
+}

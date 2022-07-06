@@ -3,6 +3,15 @@
 </mat-toolbar>
 <div class="container mat-elavation-z8">
 
+  <ng-container >
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="Pretraga cvetnih aranzmana..."
+        (keyup)="applyFilter($any($event.target).value)">
+    </mat-form-field>
+  </ng-container>
+
 
   <mat-table #table matSort [dataSource]="dataSource" class="mat-cell">
 
@@ -27,22 +36,25 @@
       <mat-cell *matCellDef="let row">{{ row.opisAranzmana }}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="pakovanjeID">
-      <mat-header-cell *matHeaderCellDef mat-sort-header>Vrsta</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{ row.pakovanjeID }}</mat-cell>
+    <ng-container matColumnDef="pakovanje">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Pakovanje</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{ row.pakovanje.nazivPakovanja }}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef>
-        <button (click)="openDialog(1)" mat-icon-button color="accent">
+        <button *ngIf="!isRole()" (click)="openDialog(1)" mat-icon-button color="accent">
           <mat-icon>add</mat-icon>
         </button>
       </mat-header-cell>
       <mat-cell *matCellDef="let row; let i = index">
-        <button (click)="openDialog(2, row.idCveta, row.bojaCveta, row.cenaCveta, row.vrstaCveta)" mat-icon-button color="accent">
+        <button (click)="shop(row)" mat-icon-button color="accent" [disabled]="!isUserAuthenticated()">
+          <mat-icon aria-label="Shop">shopping_basket</mat-icon>
+        </button>
+        <button *ngIf="!isRole()" (click)="openDialog(2, row.cvetniAranzmanID, row.nazivAranzmana, row.cenaAranzmana, row.opisAranzmana, row.kolicina, row.pakovanjeID)" mat-icon-button color="accent">
           <mat-icon aria-label="Edit">edit</mat-icon>
         </button>
-        <button (click)="openDialog(3, row.idCveta, row.bojaCveta, row.cenaCveta, row.vrstaCveta)" mat-icon-button color="accent">
+        <button *ngIf="!isRole()" (click)="openDialog(3, row.cvetniAranzmanID, row.nazivAranzmana, row.cenaAranzmana, row.opisAranzmana, row.kolicina, row.pakovanjeID)" mat-icon-button color="accent">
           <mat-icon aria-label="Delete">delete</mat-icon>
         </button>
       </mat-cell>
